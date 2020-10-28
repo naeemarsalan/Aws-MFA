@@ -29,13 +29,6 @@ SAkey=$(echo $resp | jq '.Credentials["SecretAccessKey"]' | tr -d '"')
 ST=$(echo $resp | jq '.Credentials["SessionToken"]' | tr -d '"')
 AKey=$(echo $resp | jq '.Credentials["AccessKeyId"]' | tr -d '"')
 
-sed -i '7,$d' ~/.aws/credentials 
-
-echo "aws_access_key_id = $AKey" >> ~/.aws/credentials
-echo "aws_secret_access_key = $SAkey" >> ~/.aws/credentials
-echo "aws_session_token = $ST" >> ~/.aws/credentials
-
-
 echo "export AWS_ACCESS_KEY_ID=$AKey" > ~/.aws/vars
 echo "export AWS_SECRET_ACCESS_KEY=$SAkey" >> ~/.aws/vars
 echo "export AWS_SESSION_TOKEN=$ST" >> ~/.aws/vars
